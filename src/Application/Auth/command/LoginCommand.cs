@@ -5,14 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
-using StoreBackendClean.Infrastructure.Persistance;
-using StoreBackendClean.Infrastructure.Identity;
-using StoreBackendClean.Domain.Entity;
-using StoreBackendClean.Domain.common;
-using Microsoft.Extensions.Options;
+using StoreSolution.Domain.Entity;
+using StoreSolution.Application.common.Interfaces;
+using StoreSolution.Application.common.Models;
+// using Microsoft.Extensions.Options;
 
 
-namespace StoreBackendClean.Application.Auth.command {
+namespace StoreSolution.Application.Auth.command {
 
     public class LoginCommand : IRequest<UserAuthentication> {
 
@@ -28,12 +27,13 @@ namespace StoreBackendClean.Application.Auth.command {
 
     public class LoginHandler : IRequestHandler<LoginCommand, UserAuthentication> {
 
-        private readonly ApplicationContext context;
-        private readonly IdentityService identityService;
+        private readonly IDBContext context;
+        private readonly IIdentityService identityService;
 
-        public LoginHandler(ApplicationContext db_context, IOptions<AuthSettings> option) {
+        public LoginHandler(IDBContext db_context, IIdentityService identity) { //IOptions<AuthSettings> option
             context = db_context;
-            identityService = new IdentityService(option);
+            identityService = identity;
+            // identityService = new IdentityService(option);
         }
 
         public async Task<UserAuthentication> Handle(LoginCommand request, CancellationToken cancellationToken) {
