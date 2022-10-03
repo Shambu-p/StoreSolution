@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
-using StoreBackendClean.Infrastructure.Persistance;
-using StoreBackendClean.Domain.Entity;
+using StoreSolution.Application.common.Interfaces;
+using StoreSolution.Domain.Entity;
 
-namespace StoreBackendClean.Application.UserModule.command
+namespace StoreSolution.Application.UserModule.command
 {
     public class ChangeUser : IRequest<User> {
         
@@ -29,9 +29,9 @@ namespace StoreBackendClean.Application.UserModule.command
 
     public class ChangeUserHandler : IRequestHandler<ChangeUser, User>{
 
-        private readonly ApplicationContext context;
+        private readonly IDBContext context;
 
-        public ChangeUserHandler(ApplicationContext db_context){
+        public ChangeUserHandler(IDBContext db_context){
             this.context = db_context;
         }
 

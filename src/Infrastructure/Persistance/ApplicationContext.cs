@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using StoreBackendClean.Domain.Entity;
-using StoreBackendClean.Infrastructure.Persistance.configuration;
+using StoreSolution.Domain.Entity;
+using StoreSolution.Infrastructure.Persistance.configuration;
+using StoreSolution.Application.common.Interfaces;
 
-namespace StoreBackendClean.Infrastructure.Persistance {
+namespace StoreSolution.Infrastructure.Persistance {
 
-    public partial class ApplicationContext : DbContext {
+    public partial class ApplicationContext : IDBContext {
 
-        public ApplicationContext() {}
+        // public ApplicationContext() {}
 
-        public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options) {
+        public ApplicationContext(DbContextOptions<IDBContext> options) : base(options) {
             
         }
 

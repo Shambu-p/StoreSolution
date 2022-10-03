@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StoreBackendClean.Domain.Entity
+namespace StoreSolution.Domain.Entity
 {
     public partial class Item
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using StoreBackendClean.Domain.Entity;
+using StoreSolution.Domain.Entity;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
@@ -11,10 +11,10 @@ using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 using MediatR;
-using StoreBackendClean.Application.UserModule.command;
-using StoreBackendClean.Application.UserModule.Query;
+using StoreSolution.Application.UserModule.command;
+using StoreSolution.Application.UserModule.Query;
 
-namespace StoreBackendClean.Controllers {
+namespace StoreSolution.WebAPI.Controllers {
 
     [ApiController]
     [Route("api/[controller]")]
@@ -63,7 +63,7 @@ namespace StoreBackendClean.Controllers {
                 new_user.Email = email;
                 new_user.Role = role;
                 
-                return Ok(mediator.Send(new ChangeUser(new_user)));
+                return Ok(await mediator.Send(new ChangeUser(new_user)));
 
             } catch(Exception ex) {
                 return NotFound(ex.Message);

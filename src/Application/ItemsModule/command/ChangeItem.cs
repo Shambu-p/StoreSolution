@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
-using StoreBackendClean.Infrastructure.Persistance;
-using StoreBackendClean.Domain.Entity;
+using StoreSolution.Application.common.Interfaces;
+using StoreSolution.Domain.Entity;
 
-namespace StoreBackendClean.Application.ItemsModule.command
+namespace StoreSolution.Application.ItemsModule.command
 {
     public class ChangeItem : IRequest<Item> {
         
@@ -26,9 +26,9 @@ namespace StoreBackendClean.Application.ItemsModule.command
 
     public class ChangeItemHandler : IRequestHandler<ChangeItem, Item> {
 
-        private readonly ApplicationContext context;
+        private readonly IDBContext context;
 
-        public ChangeItemHandler(ApplicationContext db_context){
+        public ChangeItemHandler(IDBContext db_context){
             context = db_context;
         }
 

@@ -4,14 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using StoreBackendClean.Domain.Entity;
-using StoreBackendClean.Application.StoreModule.command;
-using StoreBackendClean.Application.StoreModule.Query;
-using StoreBackendClean.Application.StoreItemModule.command;
-using StoreBackendClean.Application.StoreItemModule.Query;
+using StoreSolution.Domain.Entity;
+using StoreSolution.Application.StoreModule.command;
+using StoreSolution.Application.StoreModule.Query;
+using StoreSolution.Application.StoreItemModule.command;
+using StoreSolution.Application.StoreItemModule.Query;
 using Microsoft.AspNetCore.Authorization;
 
-namespace StoreBackendClean.Controllers
+namespace StoreSolution.WebAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

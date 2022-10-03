@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using StoreBackendClean.Domain.Entity;
-using StoreBackendClean.Domain.common;
+using StoreSolution.Application.common.Models;
+using StoreSolution.Application.common.Interfaces;
 
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -12,9 +12,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using System.Security.Claims;
 
-namespace StoreBackendClean.Infrastructure.Identity
+namespace StoreSolution.Infrastructure.Identity
 {
-    public class IdentityService {
+    public class IdentityService: IIdentityService {
 
         public readonly AuthSettings jwtSettings;
 
@@ -43,6 +43,21 @@ namespace StoreBackendClean.Infrastructure.Identity
             user.Token = token_handler.WriteToken(token_handler.CreateToken(token_descriptor));
 
             return user;
+
+        }
+
+        public UserAuthentication getUser(){
+
+            UserAuthentication user_return = new UserAuthentication();
+            // user_return.Id = uint.Parse(User?.FindFirstValue("Id"));
+            // user_return.Name = User?.FindFirstValue("Name");
+            // user_return.Email = User?.FindFirstValue("Email");
+
+             // string role = User?.FindFirstValue("Role");
+            // user_return.Role = Convert.ToByte(User?.FindFirstValue("Role"));
+             // user_return.Token = token;
+
+            return user_return;
 
         }
     }

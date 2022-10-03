@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
-using StoreBackendClean.Infrastructure.Persistance;
-using StoreBackendClean.Domain.Entity;
+using StoreSolution.Application.common.Interfaces;
+using StoreSolution.Domain.Entity;
 
-namespace StoreBackendClean.Application.BoxItemModule.Query
+namespace StoreSolution.Application.BoxItemModule.Query
 {
     public class GetBoxItemQuery : IRequest<BoxItem> {
         
@@ -24,9 +24,9 @@ namespace StoreBackendClean.Application.BoxItemModule.Query
 
     public class GetBoxItemHandler : IRequestHandler<GetBoxItemQuery, BoxItem> {
 
-        private readonly ApplicationContext context;
+        private readonly IDBContext context;
 
-        public GetBoxItemHandler(ApplicationContext db_context){
+        public GetBoxItemHandler(IDBContext db_context){
             context = db_context;
         }
 

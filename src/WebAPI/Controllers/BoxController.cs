@@ -4,16 +4,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using StoreBackendClean.Domain.Entity;
-using StoreBackendClean.Application.BoxModule.command;
-using StoreBackendClean.Application.BoxModule.Query;
-using StoreBackendClean.Application.BoxItemModule.Query;
-using StoreBackendClean.Application.BoxItemModule.command;
+using StoreSolution.Domain.Entity;
+using StoreSolution.Application.BoxModule.command;
+using StoreSolution.Application.BoxModule.Query;
+using StoreSolution.Application.BoxItemModule.Query;
+using StoreSolution.Application.BoxItemModule.command;
 using Microsoft.AspNetCore.Authorization;
 using System.Text;
 using System.Security.Claims;
 
-namespace StoreBackendClean.Controllers {
+namespace StoreSolution.WebAPI.Controllers {
 
     [ApiController]
     [Route("api/[controller]")]

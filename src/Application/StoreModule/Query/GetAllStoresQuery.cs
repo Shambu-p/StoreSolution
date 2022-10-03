@@ -5,18 +5,18 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
-using StoreBackendClean.Infrastructure.Persistance;
-using StoreBackendClean.Domain.Entity;
+using StoreSolution.Application.common.Interfaces;
+using StoreSolution.Domain.Entity;
 
-namespace StoreBackendClean.Application.StoreModule.Query
+namespace StoreSolution.Application.StoreModule.Query
 {
     public class GetAllStoresQuery : IRequest<IEnumerable<Store>> {}
 
     public class GetAllStoresHandler : IRequestHandler<GetAllStoresQuery, IEnumerable<Store>> {
 
-        private readonly ApplicationContext context;
+        private readonly IDBContext context;
 
-        public GetAllStoresHandler(ApplicationContext db_context){
+        public GetAllStoresHandler(IDBContext db_context){
             context = db_context;
         }
 

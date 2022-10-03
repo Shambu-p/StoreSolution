@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
 
-namespace StoreBackendClean.Controllers {
+namespace StoreSolution.WebAPI.Controllers {
 
     [ApiController]
     [Route("api/[controller]")]

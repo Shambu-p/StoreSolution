@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using StoreBackendClean.Infrastructure.Persistance.configuration;
+using StoreSolution.Infrastructure.Persistance.configuration;
 
-namespace StoreBackendClean.Infrastructure.Persistance
+namespace StoreSolution.Infrastructure.Persistance
 {
     public static class PersistanceBuilder {
         

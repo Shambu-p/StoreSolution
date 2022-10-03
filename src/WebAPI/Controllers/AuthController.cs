@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using StoreBackendClean.Domain.Entity;
-using StoreBackendClean.Domain.common;
+// using StoreSolution.Domain.Entity;
+using StoreSolution.Application.common.Models;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
@@ -16,10 +16,10 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using System.Security.Claims;
 
-using StoreBackendClean.Application.Auth.command;
+using StoreSolution.Application.Auth.command;
 
 
-namespace StoreBackendClean.Controllers {
+namespace StoreSolution.WebAPI.Controllers {
 
     [ApiController]
     [Route("api/[controller]")]

@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using StoreBackendClean.Domain.Entity;
+using StoreSolution.Domain.Entity;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using StoreBackendClean.Application.ItemsModule.command;
-using StoreBackendClean.Application.ItemsModule.Query;
+using StoreSolution.Application.ItemsModule.command;
+using StoreSolution.Application.ItemsModule.Query;
 using Microsoft.AspNetCore.Authorization;
 
-namespace StoreBackendClean.Controllers
+namespace StoreSolution.WebAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

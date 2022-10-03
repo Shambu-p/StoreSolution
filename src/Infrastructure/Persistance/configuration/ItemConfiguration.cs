@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using StoreBackendClean.Domain.Entity;
+using StoreSolution.Domain.Entity;
 
-namespace StoreBackendClean.Infrastructure.Persistance.configuration
+namespace StoreSolution.Infrastructure.Persistance.configuration
 {
     public static class ItemConfiguration {
         

@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
-using StoreBackendClean.Infrastructure.Persistance;
-using StoreBackendClean.Domain.Entity;
+using StoreSolution.Application.common.Interfaces;
+using StoreSolution.Domain.Entity;
 
-namespace StoreBackendClean.Application.BoxModule.command
+namespace StoreSolution.Application.BoxModule.command
 {
     public class CreateBox : IRequest<Box> {
 
@@ -24,9 +24,9 @@ namespace StoreBackendClean.Application.BoxModule.command
 
     public class CreateBoxHandler : IRequestHandler<CreateBox, Box> {
 
-        private readonly ApplicationContext context;
+        private readonly IDBContext context;
 
-        public CreateBoxHandler(ApplicationContext db_context){
+        public CreateBoxHandler(IDBContext db_context){
             context = db_context;
         }
 

@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
-using StoreBackendClean.Infrastructure.Persistance;
-using StoreBackendClean.Domain.Entity;
+using StoreSolution.Application.common.Interfaces;
+using StoreSolution.Domain.Entity;
 
-namespace StoreBackendClean.Application.BoxItemModule.command
+namespace StoreSolution.Application.BoxItemModule.command
 {
     public class ChangeItemQuantity : IRequest<BoxItem> {
         
@@ -27,9 +27,9 @@ namespace StoreBackendClean.Application.BoxItemModule.command
 
     public class ChangeItemQuantityHandler : IRequestHandler<ChangeItemQuantity, BoxItem> {
 
-        private readonly ApplicationContext context;
+        private readonly IDBContext context;
 
-        public ChangeItemQuantityHandler(ApplicationContext db_context){
+        public ChangeItemQuantityHandler(IDBContext db_context){
             context = db_context;
         }
 
