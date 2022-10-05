@@ -13,7 +13,7 @@ namespace StoreSolution.WebAPI.Controllers {
 
         private ISender _mediator = null!;
 
-        protected ISender mediator => _mediator ??= HttpContext.RequestServices.GetRequiredService<ISender>();
+        protected ISender mediator => _mediator ??= HttpContext.RequestServices.GetRequiredService<ISender>();  
 
     }
 }

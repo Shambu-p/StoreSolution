@@ -1,17 +1,6 @@
-using Microsoft.EntityFrameworkCore;
-using StoreSolution.Domain.Entity;
-using StoreSolution.Application.common.Models;
-using StoreSolution.Application.common.Interfaces;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
 using Swashbuckle.AspNetCore.Filters;
 using Microsoft.OpenApi.Models;
-using System.Text;
 using Newtonsoft.Json;
-using StoreSolution.Infrastructure.Persistance;
-using StoreSolution.Infrastructure.Identity;
-using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
