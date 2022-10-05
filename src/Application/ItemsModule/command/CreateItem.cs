@@ -37,7 +37,7 @@ namespace StoreSolution.Application.ItemsModule.command
             new_item.Price = request.Price;
 
             context.Items.Add(new_item);
-            await context.SaveChangesAsync();
+            await context.SaveChangesAsync(cancellationToken);
 
             return new_item;
 

@@ -43,8 +43,8 @@ namespace StoreSolution.Application.ItemsModule.command
             item.Name = request.Name;
             item.Price = request.Price;
 
-            context.Entry(item).State = EntityState.Modified;
-            await context.SaveChangesAsync();
+            // context.Entry(item).State = EntityState.Modified;
+            await context.SaveChangesAsync(cancellationToken);
 
             return item;
 

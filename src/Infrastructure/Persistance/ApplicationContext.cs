@@ -8,13 +8,11 @@ using StoreSolution.Application.common.Interfaces;
 
 namespace StoreSolution.Infrastructure.Persistance {
 
-    public partial class ApplicationContext : IDBContext {
+    public partial class ApplicationContext : DbContext, IDBContext {
 
         // public ApplicationContext() {}
 
-        public ApplicationContext(DbContextOptions<IDBContext> options) : base(options) {
-            
-        }
+        // public ApplicationContext(DbContextOptions<IDBContext> options) : base(options) {}
 
         public virtual DbSet<Box> Boxes { get; set; } = null!;
         public virtual DbSet<BoxItem> BoxItems { get; set; } = null!;
@@ -22,6 +20,21 @@ namespace StoreSolution.Infrastructure.Persistance {
         public virtual DbSet<Store> Stores { get; set; } = null!;
         public virtual DbSet<StoreItem> StoreItems { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
+
+
+        // private readonly string _connectionString = "Server=localhost;Database=store_box;Uid=root;Pwd=password;Port=3306;";
+
+        // public ApplicationContext():
+        //     base(new DbContextOptionsBuilder<ApplicationContext>()
+        //         .UseMySql("Server=localhost;Database=store_box;Uid=root;Pwd=password;Port=3306;", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.29-mysql"))
+        //         .Options){
+        // }
+
+        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
+        //     optionsBuilder.;
+        // }
+        
+        public ApplicationContext(DbContextOptions options): base(options){}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
 
@@ -143,6 +156,16 @@ namespace StoreSolution.Infrastructure.Persistance {
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-        
+
+        public override async Task<int> SaveChangesAsync(CancellationToken token = default)
+        {
+            return await base.SaveChangesAsync(token);
+        }
+
+        public override int SaveChanges()
+        {
+            return base.SaveChanges();
+        }
+
     }
 }

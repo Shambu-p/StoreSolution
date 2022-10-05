@@ -48,7 +48,7 @@ namespace StoreSolution.Application.BoxModule.command
             new_box.StoreId = request.StoreId;
 
             context.Boxes.Add(new_box);
-            await context.SaveChangesAsync();
+            await context.SaveChangesAsync(cancellationToken);
 
             return new_box;
 

@@ -78,7 +78,7 @@ namespace StoreSolution.Application.BoxItemModule.command
             }
 
             // await store_item_service.itemBoxing(request.ItemId, bx.Store.Id, Convert.ToUInt32(request.Amount));
-            await context.SaveChangesAsync();
+            await context.SaveChangesAsync(cancellationToken);
             return bx_item;
 
         }

@@ -17,7 +17,7 @@ namespace StoreSolution.Infrastructure.Identity
     public class IdentityService: IIdentityService {
 
         public readonly AuthSettings jwtSettings;
-
+        
         public IdentityService(IOptions<AuthSettings> option) {
             this.jwtSettings = option.Value;
         }
@@ -26,15 +26,16 @@ namespace StoreSolution.Infrastructure.Identity
 
             var token_descriptor = new SecurityTokenDescriptor {
                 Subject = new ClaimsIdentity(new Claim[]{
-                        new Claim("Id", user.Id.ToString()),
-                        new Claim("Name", user.Name),
-                        new Claim("Email", user.Email),
-                        new Claim("Role", user.Role.ToString())
-                    }),
+                    new Claim("Id", user.Id.ToString()),
+                    new Claim("Name", user.Name),
+                    new Claim("Email", user.Email),
+                    new Claim("Role", user.Role.ToString())
+                }),
 
                 Expires = DateTime.Now.AddSeconds(3600),
                 SigningCredentials = new SigningCredentials(
                     new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this.jwtSettings.securityKey)),
+                    // new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this.jwtSettings.securityKey")),
                     SecurityAlgorithms.HmacSha256
                 )
             };
@@ -55,7 +56,7 @@ namespace StoreSolution.Infrastructure.Identity
 
              // string role = User?.FindFirstValue("Role");
             // user_return.Role = Convert.ToByte(User?.FindFirstValue("Role"));
-             // user_return.Token = token;
+            // user_return.Token = token;
 
             return user_return;
 

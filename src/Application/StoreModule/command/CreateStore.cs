@@ -43,7 +43,7 @@ namespace StoreSolution.Application.StoreModule.command
             new_store.StoreKeeper = request.StoreKeeper;
 
             context.Stores.Add(new_store);
-            await context.SaveChangesAsync();
+            await context.SaveChangesAsync(cancellationToken);
 
             new_store.StoreKeeperNavigation = store_user;
 

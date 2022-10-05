@@ -54,8 +54,8 @@ namespace StoreSolution.Application.StoreModule.command
 
             }
 
-            context.Entry(store).State = EntityState.Modified;
-            await context.SaveChangesAsync();
+            // context.Entry(store).State = EntityState.Modified;
+            await context.SaveChangesAsync(cancellationToken);
 
             if(store_keeper != null){
                 store.StoreKeeperNavigation = store_keeper;

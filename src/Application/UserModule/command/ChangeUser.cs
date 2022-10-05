@@ -59,8 +59,8 @@ namespace StoreSolution.Application.UserModule.command
                 user.Role = request.Role;
             }
 
-            context.Entry(user).State = EntityState.Modified;
-            await context.SaveChangesAsync();
+            // context.Entry(user).State = EntityState.Modified;
+            await context.SaveChangesAsync(cancellationToken);
 
             return user;
             

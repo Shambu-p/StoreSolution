@@ -52,7 +52,7 @@ namespace StoreSolution.Application.UserModule.command
 
             found_user.Password = BCrypt.Net.BCrypt.HashPassword(request.new_password);
 
-            await context.SaveChangesAsync();
+            await context.SaveChangesAsync(cancellationToken);
 
             return found_user;
 

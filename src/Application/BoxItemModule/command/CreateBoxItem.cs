@@ -60,7 +60,7 @@ namespace StoreSolution.Application.BoxItemModule.command
             // await store_item_service.itemBoxing(item_id, bx.Store.Id, Convert.ToUInt32(amount));
             st.UnboxedAmount -= Convert.ToUInt32(request.Amount);
             context.BoxItems.Add(bx_item);
-            await context.SaveChangesAsync();
+            await context.SaveChangesAsync(cancellationToken);
 
             bx_item.Item = st.Item;
 

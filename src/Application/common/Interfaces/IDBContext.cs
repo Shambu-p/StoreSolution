@@ -9,20 +9,25 @@ using StoreSolution.Domain.Entity;
 
 namespace StoreSolution.Application.common.Interfaces
 {
-    public abstract class IDBContext: DbContext {
+    public interface IDBContext {
         
-        public virtual DbSet<Box> Boxes { get; set; } = null!;
-        public virtual DbSet<BoxItem> BoxItems { get; set; } = null!;
-        public virtual DbSet<Item> Items { get; set; } = null!;
-        public virtual DbSet<Store> Stores { get; set; } = null!;
-        public virtual DbSet<StoreItem> StoreItems { get; set; } = null!;
-        public virtual DbSet<User> Users { get; set; } = null!;
+        // public virtual DbSet<Box> Boxes { get; set; } = null!;
+        // public virtual DbSet<BoxItem> BoxItems { get; set; } = null!;
+        // public virtual DbSet<Item> Items { get; set; } = null!;
+        // public virtual DbSet<Store> Stores { get; set; } = null!;
+        // public virtual DbSet<StoreItem> StoreItems { get; set; } = null!;
+        // public virtual DbSet<User> Users { get; set; } = null!;
 
-        public IDBContext(DbContextOptions<IDBContext> options) : base(options) {
-            
-        }
+        DbSet<Box> Boxes { get; set; }
+        DbSet<BoxItem> BoxItems { get; set; }
+        DbSet<Item> Items { get; set; }
+        DbSet<Store> Stores { get; set; }
+        DbSet<StoreItem> StoreItems { get; set; }
+        DbSet<User> Users { get; set; }
 
-        // public void OnModelCreatingPartial(ModelBuilder modelBuilder);
-        
+        Task<int> SaveChangesAsync(CancellationToken token);
+
+        int SaveChanges();
+
     }
 }

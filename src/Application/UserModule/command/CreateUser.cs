@@ -47,7 +47,7 @@ namespace StoreSolution.Application.UserModule.command
             //BCrypt.Net.BCrypt.Verify("Pa$$w0rd", passwordHash);
 
             context.Users.Add(new_user);
-            var result = await context.SaveChangesAsync();
+            var result = await context.SaveChangesAsync(cancellationToken);
 
             return new_user;
 

@@ -36,30 +36,6 @@ builder.Services.AddSwaggerGen(options => {
 
 });
 
-
-var _jwt_settings = builder.Configuration.GetSection("AuthSettings");
-builder.Services.Configure<AuthSettings>(_jwt_settings);
-
-var _authKey = builder.Configuration.GetValue<string>("AuthSettings:securityKey");
-builder.Services.AddAuthentication(item => {
-    item.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    item.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(item => {
-    item.RequireHttpsMetadata = true;
-    item.SaveToken = true;
-    item.TokenValidationParameters = new TokenValidationParameters() {
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_authKey)),
-        ValidateIssuer = false,
-        ValidateAudience = false
-    };
-});
-
-builder.Services.AddDbContext<ApplicationContext>(options => {
-    options.UseMySql(builder.Configuration.GetConnectionString("my_db"),
-    Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.29-mysql"));
-});
-
 builder.Services.AddMvc(option => option.EnableEndpointRouting = false)
     .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
@@ -68,10 +44,8 @@ builder.Services.AddCors(option => option.AddPolicy(name: cors_name, policy => {
     policy.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
 }));
 
-builder.Services.AddMediatR(typeof(Program));
-// builder.Services.AddApplicationServices();
-// builder.Services.AddInfrastructureServices();
-builder.Services.AddScoped<IIdentityService, IdentityService>();
+builder.Services.AddApplicationServices(builder.Configuration);
+builder.Services.AddInfrastructureServices(builder.Configuration);
 
 var app = builder.Build();
 

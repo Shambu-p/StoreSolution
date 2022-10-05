@@ -53,7 +53,7 @@ namespace StoreSolution.Application.StoreItemModule.command {
             new_store_item.UnboxedAmount = request.Amount;
 
             store.StoreItems.Add(new_store_item);
-            await context.SaveChangesAsync();
+            await context.SaveChangesAsync(cancellationToken);
 
             new_store_item.Item = item;
 

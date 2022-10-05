@@ -56,7 +56,7 @@ namespace StoreSolution.Application.StoreItemModule.command
 
             }
 
-            this.context.SaveChanges();
+            this.context.SaveChangesAsync(cancellationToken);
             return store_item;
 
         }
