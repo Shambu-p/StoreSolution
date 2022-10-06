@@ -18,7 +18,7 @@ public partial class Testing
     private static WebApplicationFactory<Program> _factory = null!;
     private static IConfiguration _configuration = null!;
     private static IServiceScopeFactory _scopeFactory = null!;
-    // private static Checkpoint _checkpoint = null!;
+    private static Checkpoint _checkpoint = null!;
     private static string? _currentUserId;
 
     [OneTimeSetUp]
@@ -28,10 +28,10 @@ public partial class Testing
         _scopeFactory = _factory.Services.GetRequiredService<IServiceScopeFactory>();
         _configuration = _factory.Services.GetRequiredService<IConfiguration>();
 
-        // _checkpoint = new Checkpoint
-        // {
-        //     TablesToIgnore = new[] { "__EFMigrationsHistory" }
-        // };
+        _checkpoint = new Checkpoint
+        {
+            // TablesToIgnore = new[] { "__EFMigrationsHistory" }
+        };
     }
 
     public static async Task<TResponse> SendAsync<TResponse>(IRequest<TResponse> request)
@@ -92,12 +92,12 @@ public partial class Testing
     //     throw new Exception($"Unable to create {userName}.{Environment.NewLine}{errors}");
     // }
 
-    // public static async Task ResetState()
-    // {
-    //     await _checkpoint.Reset(_configuration.GetConnectionString("my_db"));
-    //
-    //     _currentUserId = null;
-    // }
+    public static async Task ResetState()
+    {
+        await _checkpoint.Reset(_configuration.GetConnectionString("my_db"));
+    
+        _currentUserId = null;
+    }
 
     public static async Task<TEntity?> FindAsync<TEntity>(params object[] keyValues)
         where TEntity : class
